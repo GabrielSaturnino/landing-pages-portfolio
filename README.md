@@ -38,8 +38,18 @@ As ilustrações SVG são autorais e estão no próprio repositório. As variant
 
 ## Personalizar
 
-Cada página possui `index.html`, `style.css` e `app.js`. Estilos e comportamentos comuns ficam em `assets/base.css` e `assets/base.js`. `build.py` é o gerador-fonte da coleção: ao editar arquivos gerados, atualize também o gerador para manter a reprodução consistente.
+Cada página possui `index.html`, `style.css` e `app.js`. Estilos e comportamentos comuns ficam em `assets/base.css` e `assets/base.js`. `build.py` é o gerador-fonte da coleção e aplica `redesign.py` para as cinco direções visuais: ao editar arquivos gerados, atualize também o gerador para manter a reprodução consistente.
 
 ## Uso no portfólio
 
 Apresente como **projetos conceituais/demonstrativos**, nunca como trabalhos entregues a clientes. Remova a condição de demo apenas quando os conteúdos reais e integrações estiverem implementados e validados.
+
+## Experiências distintas — segunda edição
+
+- Forma: portfólio editorial monocromático, índice lateral fixo e capa navegável.
+- Aurora: descoberta de ritual em três etapas, linguagem arredondada e detalhes de produtos em painel lateral.
+- Serra: abertura imersiva, planejamento por cabana e exploração de um dia por períodos.
+- Fluxo: interface de produto azul, hero em duas colunas e modos Quadro, Lista e Resumo.
+- Brasa: identidade expressiva de pizzaria, cardápio em linhas e barra permanente do pedido.
+
+A vitrine permanece como catálogo neutro. Novos CSS e scripts recebem nomes com hash de conteúdo para evitar cache de versões anteriores.
