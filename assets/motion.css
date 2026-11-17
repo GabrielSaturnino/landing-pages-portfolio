@@ -1,0 +1,40 @@
+/* Small, purpose-led motion; opacity/translate never change document geometry. */
+body{--motion-ease:cubic-bezier(.22,1,.36,1);--motion-time:560ms;--motion-distance:20px}
+body.forma{--motion-time:520ms;--motion-distance:16px}
+body.aurora{--motion-time:620ms;--motion-distance:20px}
+body.serra{--motion-time:800ms;--motion-distance:26px}
+body.fluxo{--motion-time:420ms;--motion-distance:12px}
+body.brasa{--motion-time:360ms;--motion-distance:12px}
+@media(prefers-reduced-motion:no-preference){
+ .motion-ready [data-motion]{transition-property:opacity,translate,transform,box-shadow,filter;transition-duration:var(--motion-time),var(--motion-time),350ms,350ms,350ms;transition-timing-function:var(--motion-ease);transition-delay:var(--motion-delay,0ms),var(--motion-delay,0ms),0ms,0ms,0ms}
+ .motion-ready [data-motion]:not(.is-visible){opacity:0;translate:0 var(--motion-distance)}
+ .motion-ready [data-motion].is-visible{opacity:1;translate:0 0}
+ /* A focused or targeted block must never wait for a reveal. */
+ .motion-ready [data-motion]:focus-within,.motion-ready [data-motion]:target{opacity:1;translate:0 0;transition-delay:0ms}
+ .btn,.chip,.round-btn,.cover-controls button,.quiz-restart,.product-link,.add,.cart-trigger,.dock-order,.qty button,.dialog-close,.billing button,.quiz-options button,#quiz-answers button,.app-tabs button,.day-options button{transition:background-color 180ms ease,color 180ms ease,border-color 180ms ease,box-shadow 200ms ease,transform 220ms var(--motion-ease)}
+ .btn:active,.add:active,.dock-order:active,.round-btn:active,.cover-controls button:active,.qty button:active{scale:.975;transition-duration:90ms}
+ .project-img img,.cabin-art img{transition:transform 700ms var(--motion-ease),filter 500ms ease}
+ .cabin:hover .cabin-art img,.cabin:focus-within .cabin-art img{transform:scale(1.135)}
+ .aurora .product{transition:transform 350ms var(--motion-ease),box-shadow 350ms ease}
+ .aurora .product:hover,.aurora .product:focus-within{box-shadow:0 14px 30px #702c8310;transform:translateY(-5px)}
+ .links>a:not(.btn){transition:opacity 180ms ease,color 180ms ease}
+ .field input,.field textarea,.field select{transition:border-color 180ms ease,box-shadow 180ms ease,background-color 180ms ease}
+ .field input:focus,.field textarea:focus,.field select:focus{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent)}
+ /* Native dialogs retain focus trapping, Escape, and top-layer semantics. */
+ .dialog{opacity:0;translate:0 12px;scale:.985;transition:opacity 220ms ease,translate 280ms var(--motion-ease),scale 280ms var(--motion-ease),display 280ms allow-discrete,overlay 280ms allow-discrete}
+ .dialog[open]{opacity:1;translate:0 0;scale:1}
+ .dialog::backdrop{opacity:0;transition:opacity 240ms ease,display 280ms allow-discrete,overlay 280ms allow-discrete}
+ .dialog[open]::backdrop{opacity:1}
+ .aurora .dialog{translate:24px 0;scale:1}
+ .aurora .dialog[open]{translate:0 0}
+ @starting-style{.dialog[open]{opacity:0;translate:0 12px;scale:.985}.dialog[open]::backdrop{opacity:0}.aurora .dialog[open]{translate:24px 0;scale:1}}
+ summary:after{transition:rotate 220ms ease,color 180ms ease}
+ details[open] summary:after{rotate:180deg}
+ .toast{transition:opacity 180ms ease,translate 240ms var(--motion-ease),display 240ms allow-discrete}
+ .toast:empty{opacity:0;translate:0 7px}
+ @starting-style{.toast:not(:empty){opacity:0;translate:0 7px}}
+ @media(hover:hover){.fluxo .task{transition:box-shadow 200ms ease,border-color 200ms ease}.fluxo .task:hover{border-color:#b8c8ff;box-shadow:0 5px 14px #3157ff0c}}
+ @media(max-width:650px){.links{transition:opacity 200ms ease,translate 240ms var(--motion-ease),display 240ms allow-discrete}.links:not(.open){opacity:0;translate:0 -6px}.links.open{opacity:1;translate:0 0}@starting-style{.links.open{opacity:0;translate:0 -6px}}}
+}
+/* Reduced motion applies even if the visitor changes their setting mid-session. */
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}[data-motion]{opacity:1!important;translate:none!important;scale:1!important}.dialog,.dialog::backdrop,.links,.toast{transition:none!important;animation:none!important}.dialog[open]{opacity:1;translate:none;scale:1}}

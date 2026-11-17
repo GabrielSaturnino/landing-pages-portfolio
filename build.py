@@ -96,10 +96,17 @@ Apresente como **projetos conceituais/demonstrativos**, nunca como trabalhos ent
 ''')
 import runpy
 runpy.run_path(str(R/"redesign.py"))
+# Keep motion enhancements independent of content and art direction.
+for brand in ('forma','aurora','serra','fluxo','brasa'):
+ page=R/brand/'index.html'
+ html=page.read_text().replace('</head>','<link rel="stylesheet" href="../assets/motion.css"><script src="../assets/motion.js" defer></script></head>')
+ page.write_text(html)
+
 
 # Content-versioned CSS prevents stale browser/CDN styles after deployment.
 import hashlib
 css_files=[R/'assets/base.css',R/'assets/hub.css']+[R/x/'style.css' for x in ('forma','aurora','serra','fluxo','brasa')]
+css_files += [R/'assets/motion.css',R/'assets/motion.js']
 css_files += [R/'assets/base.js']+[R/x/'app.js' for x in ('forma','aurora','serra','fluxo','brasa')]
 for css in css_files:
  token=hashlib.sha256(css.read_bytes()).hexdigest()[:10]
