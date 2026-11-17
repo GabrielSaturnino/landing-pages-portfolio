@@ -6,11 +6,11 @@ body.serra{--motion-time:800ms;--motion-distance:26px}
 body.fluxo{--motion-time:420ms;--motion-distance:12px}
 body.brasa{--motion-time:360ms;--motion-distance:12px}
 @media(prefers-reduced-motion:no-preference){
- .motion-ready [data-motion]{transition-property:opacity,translate,transform,box-shadow,filter;transition-duration:var(--motion-time),var(--motion-time),350ms,350ms,350ms;transition-timing-function:var(--motion-ease);transition-delay:var(--motion-delay,0ms),var(--motion-delay,0ms),0ms,0ms,0ms}
- .motion-ready [data-motion]:not(.is-visible){opacity:0;translate:0 var(--motion-distance)}
- .motion-ready [data-motion].is-visible{opacity:1;translate:0 0}
+ body.motion-ready [data-motion]{transition-property:opacity,translate,transform,box-shadow,filter;transition-duration:var(--motion-time),var(--motion-time),350ms,350ms,350ms;transition-timing-function:var(--motion-ease);transition-delay:var(--motion-delay,0ms),var(--motion-delay,0ms),0ms,0ms,0ms}
+ body.motion-ready [data-motion]:not(.is-visible){opacity:0;translate:0 var(--motion-distance)}
+ body.motion-ready [data-motion].is-visible{opacity:1;translate:0 0}
  /* A focused or targeted block must never wait for a reveal. */
- .motion-ready [data-motion]:focus-within,.motion-ready [data-motion]:target{opacity:1;translate:0 0;transition-delay:0ms}
+ body.motion-ready [data-motion]:focus-within,body.motion-ready [data-motion]:target{opacity:1;translate:0 0;transition-delay:0ms}
  .btn,.chip,.round-btn,.cover-controls button,.quiz-restart,.product-link,.add,.cart-trigger,.dock-order,.qty button,.dialog-close,.billing button,.quiz-options button,#quiz-answers button,.app-tabs button,.day-options button{transition:background-color 180ms ease,color 180ms ease,border-color 180ms ease,box-shadow 200ms ease,transform 220ms var(--motion-ease)}
  .btn:active,.add:active,.dock-order:active,.round-btn:active,.cover-controls button:active,.qty button:active{scale:.975;transition-duration:90ms}
  .project-img img,.cabin-art img{transition:transform 700ms var(--motion-ease),filter 500ms ease}

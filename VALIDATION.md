@@ -31,3 +31,14 @@ Não foi realizada auditoria WCAG completa, medição de Core Web Vitals ou matr
 - Todas as cinco páginas: conteúdo sem excesso de largura na viewport móvel observada de 375 CSS px.
 - Inspeção visual no Chrome das cinco aberturas no desktop e do cardápio mobile.
 - Ajustado fechamento de contêiner na seção de experiências da Serra após verificação de aninhamento HTML.
+
+## Movimento e transições
+
+- Camada compartilhada sem dependências, com duração por identidade visual.
+- IntersectionObserver revela blocos uma única vez, sem listener contínuo de scroll.
+- Inicialmente visível permanece visível; foco revela o conteúdo imediatamente.
+- Transições nativas de diálogo, painel lateral, menu mobile e estados dos controles.
+- Feedback do quiz, quadro, preços e totais anima somente depois da atualização real.
+- No Chrome: produtos da Aurora revelados ao navegar à coleção; painel nativo abriu e fechou; modo Lista e ações do Fluxo mantiveram o comportamento; Resumo exibiu 25%; menu mobile abriu e largura permaneceu em 375 px.
+- CSS e script respeitam prefers-reduced-motion, inclusive mudanças da preferência durante a sessão. A preferência reduzida não foi emulada no navegador de QA.
+- Corrigida especificidade entre entrada dos cards e hover da Aurora.
