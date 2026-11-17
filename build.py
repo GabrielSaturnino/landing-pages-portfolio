@@ -94,3 +94,16 @@ Cada página possui `index.html`, `style.css` e `app.js`. Estilos e comportament
 
 Apresente como **projetos conceituais/demonstrativos**, nunca como trabalhos entregues a clientes. Remova a condição de demo apenas quando os conteúdos reais e integrações estiverem implementados e validados.
 ''')
+# Content-versioned CSS prevents stale browser/CDN styles after deployment.
+import hashlib
+css_files=[R/'assets/base.css',R/'assets/hub.css']+[R/x/'style.css' for x in ('forma','aurora','serra','fluxo','brasa')]
+for css in css_files:
+ token=hashlib.sha256(css.read_bytes()).hexdigest()[:10]
+ versioned=css.with_name(css.stem+'.'+token+'.css')
+ versioned.write_bytes(css.read_bytes())
+ for page in R.rglob('*.html'):
+  old=page.read_text()
+  import os
+  href=os.path.relpath(css,page.parent)
+  new=old.replace('href="'+href+'"','href="'+os.path.relpath(versioned,page.parent)+'"')
+  if old!=new:page.write_text(new)
